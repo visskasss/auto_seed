@@ -12,7 +12,7 @@ import pygame
 
 # ---------- параметры ----------
 ROWS, COLS = 4, 6
-POCKETS, STEP_DEG = 6, 30
+POCKETS, STEP_DEG = 6, 60
 CELL = 56                          # пикселей между центрами ячеек (в жизни 40 мм)
 
 CARDS = [["111011", "101101", "110011", "111110"],     # карта кассеты 1 (1 = сеять)
@@ -57,7 +57,8 @@ def get_steps():
                 for attempt in (1, 2, 3):
                     fault = FAULTS.get((k, r, c, attempt))
                     balls = {None: 1, "пусто": 0, "два": 2}[fault]
-                    st.append(dict(text="Подача: шестерёнка поворачивается на 30°", dur=1.5, feed=balls, color="blue"))
+                    st.append(dict(text=f"Подача: шестерёнка поворачивается на {STEP_DEG}°", dur=1.5, feed=balls,
+                                   color="blue"))
                     if fault is None:
                         st.append(dict(text="Проверка: шарик в ячейке, всё хорошо", dur=0.7,
                                        set=(r, c, 1), color="green"))
